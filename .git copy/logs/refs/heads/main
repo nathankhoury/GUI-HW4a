@@ -1,0 +1,14 @@
+0000000000000000000000000000000000000000 7fe832f587821dfeedb500c836ddcce1ee1e8fd6 Nathan Khoury <nathankhoury0709@gmail.com> 1761170438 -0400	commit (initial): Initial commit
+7fe832f587821dfeedb500c836ddcce1ee1e8fd6 30231833d4299328ed8bb67c2de32cfacc416011 Nathan Khoury <nathankhoury0709@gmail.com> 1761170996 -0400	commit: init commit
+30231833d4299328ed8bb67c2de32cfacc416011 e190513bec40b3a47482bed968525a3dcb4fb2ab Nathan Khoury <nathankhoury0709@gmail.com> 1761172193 -0400	commit: add: form fields
+e190513bec40b3a47482bed968525a3dcb4fb2ab 3d7af32ab5c8c7b6c6904106dc9e7a4f200e2079 Nathan Khoury <nathankhoury0709@gmail.com> 1761173983 -0400	commit: add: inline dummy table
+3d7af32ab5c8c7b6c6904106dc9e7a4f200e2079 192a220be505183be2daf38df5548046d0d5980e Nathan Khoury <nathankhoury0709@gmail.com> 1761329753 -0400	commit: add: input validation
+192a220be505183be2daf38df5548046d0d5980e 60e749c7d63eccde00681cbf274ca424dc463921 Nathan Khoury <nathankhoury0709@gmail.com> 1761335694 -0400	commit: add: basic table generation
+60e749c7d63eccde00681cbf274ca424dc463921 b5a99ff9b6f6338ae327d174f459eea3b9de7fea Nathan Khoury <nathankhoury0709@gmail.com> 1761337231 -0400	commit: add: table aesthetics
+b5a99ff9b6f6338ae327d174f459eea3b9de7fea f7f0a7b1262b4e315e1caba08d3dbf072c1aecb3 Nathan Khoury <nathankhoury0709@gmail.com> 1761577052 -0400	commit: add: scrollable table
+f7f0a7b1262b4e315e1caba08d3dbf072c1aecb3 c094820535866894ea2ccb281643ab069afcc1b3 Nathan Khoury <nathankhoury0709@gmail.com> 1761578097 -0400	commit: Update style.css
+c094820535866894ea2ccb281643ab069afcc1b3 32e2f901b9479d7822f7be5bea99e9eb03cda882 Nathan Khoury <nathankhoury0709@gmail.com> 1761578989 -0400	commit: add: documentation
+32e2f901b9479d7822f7be5bea99e9eb03cda882 e81fa39be8d484a14de9454b4e80f0a8adedeb22 Nathan Khoury <nathankhoury0709@gmail.com> 1761579074 -0400	commit: change: file structure
+e81fa39be8d484a14de9454b4e80f0a8adedeb22 86d4bd3fd031b4eae7c79a88b895dc2bd9ad23fb Nathan Khoury <nathankhoury0709@gmail.com> 1761580392 -0400	commit: add: color
+86d4bd3fd031b4eae7c79a88b895dc2bd9ad23fb 49c11e849ed5eabdd5034686edcf7ebf1cdda847 Nathan Khoury <nathankhoury0709@gmail.com> 1761586055 -0400	commit: Create README.txt
+49c11e849ed5eabdd5034686edcf7ebf1cdda847 d8e1f0e7778f5677a40cfb7a6dc471d2ff0facb2 Nathan Khoury <nathankhoury0709@gmail.com> 1763596539 -0500	commit: Create .gitignore
