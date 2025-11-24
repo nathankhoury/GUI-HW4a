@@ -1,19 +1,17 @@
 /*
 File:           script.js
 Class:          COMP 4610 GUI Programming I
-Assignment:     HW4a, ""
+Assignment:     HW4 Part 1, "Validation Plugin"
 Name:           Nathan Khoury
 Created:        10/22/2025
 Last Modified:  11/24/2025
 
 All dynamic interactivity on the page is handled here. Constant MIN/MAX bounds
 are defined and constant document references are also defined. All code begins
-execution when the "Generate" button is clicked by the user, which calls the "generate()"
-function which serves at the main program driver. If the user has already generated
-a table, it is not deleted until the new table specifications are verified as to not
-trample the user's table without anything to replace it with. After using helper functions
-to verify valid input parameters, genTable() is called which serves as the actual
-implementation of generating the table.
+execution when the "Generate" button is clicked by the user, which submits
+the form and triggers validation via the jQuery Validation plugin. If validation
+succeeds, the main table generation driver function is called, which retrieves
+user input values and dynamically generates the multiplication table.
 */
 
 /* global variables */
@@ -23,38 +21,25 @@ const MAX = 50;
 const COL_COLOR = "#bbf";
 const ROW_COLOR = "#fbb";
 
-
 // document references
-const table = document.getElementById("result");
+const table = $("#result")[0];
 
-
-/* main table generation driver, called from "Generate" button */
+/* main table generation driver, called after jQuery Validation succeeds */
 function generate() {
     // debug message
     console.log("generate() called");
-    // get user inputs from form
-    let colMin = document.getElementById("colMin").value;
-    let colMax = document.getElementById("colMax").value;
-    let rowMin = document.getElementById("rowMin").value;
-    let rowMax = document.getElementById("rowMax").value;
+
+    // get user inputs from form, cast to integers
+    let colMin = Number(document.getElementById("colMin").value);
+    let colMax = Number(document.getElementById("colMax").value);
+    let rowMin = Number(document.getElementById("rowMin").value);
+    let rowMax = Number(document.getElementById("rowMax").value);
 
     // debug message to terminal
     console.log("got inputs: " + colMin + ", " + colMax + ", " + rowMin + ", " + rowMax);
 
-    // verify numeric input
-    // const verificationStatus = verify(colMin, colMax, rowMin, rowMax);
-    // console.log("input verified: " + verificationStatus);
-
-    // if (verificationStatus) {
-    // cast to integers for remaining processes
-    colMin = Number(colMin);
-    colMax = Number(colMax);
-    rowMin = Number(rowMin);
-    rowMax = Number(rowMax);
-
     // generate table
     genTable(colMin, colMax, rowMin, rowMax);
-    // }
 }
 
 /* generate the table post-validation */
@@ -107,18 +92,4 @@ function genTable(cmin, cmax, rmin, rmax) {
         cell.style.backgroundColor = "black";
         cell.style.color = "white";
     }
-}
-
-/* return true if x is integer, false otherwise (empty string) */
-function isInt(x) {
-    if (x === "") {
-        return false
-    } else {
-        return Number.isInteger(Number(x));
-    }
-}
-
-/* is MIN <= x <= MAX true */
-function withinMinMax(x) {
-    return (x >= MIN && x <= MAX);
 }
