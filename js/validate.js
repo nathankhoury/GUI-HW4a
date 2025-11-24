@@ -1,39 +1,80 @@
 $(document).ready(function() {
+    // Quick sanity log to verify this file is loaded and running.
+    console.log("validate.js: document ready");
+    // Let the jQuery Validation plugin handle the form submit and
+    // call `submitHandler` when validation succeeds. Do not prevent
+    // the submit event here or it may interfere with plugin flow.
+
+    $.validator.addMethod("lteq", function(value, element, param) {
+        return Number(value) <= Number($(param).val());
+    });
+
+    $.validator.addMethod("gteq", function(value, element, param) {
+        return Number(value) >= Number($(param).val());
+    });
+
     $('#form').validate({
+        submitHandler: function(form) { 
+            // validation succeeded
+            console.log("Validation succeeded");
+            // call the page's generate function; don't return false here
+            // — letting the plugin handle suppression of the native submit.
+            generate();
+        },
+        invalidHandler: function(event, validator) {
+            // validation failed
+            console.log("Validation failed. Number of errors: " + validator.numberOfInvalids());
+        },
         rules: {
             colMin: {
                 required: true,
-                range: [-50, 50]
+                number: true,
+                range: [-50, 50],
+                lteq: "#colMax"
             },
             colMax: {
                 required: true,
-                range: [-50, 50]
+                number: true,
+                range: [-50, 50],
+                gteq: "#colMin"
             },
             rowMin: {
                 required: true,
-                range: [-50, 50]
+                number: true,
+                range: [-50, 50],
+                lteq: "#rowMax"
             },
             rowMax: {
                 required: true,
-                range: [-50, 50]
+                number: true,
+                range: [-50, 50],
+                gteq: "#rowMin"
             }
         },
         messages: {
             colMin: {
                 required: "It is required to enter a minimum column value",
-                range: "Minimum column value must be between -50 and 50"
+                number: "Please enter a valid number",
+                range: "Minimum column value must be between -50 and 50",
+                lteq: "Minimum column value must be less than or equal to maximum column value"
             },
             colMax: {
                 required: "It is required to enter a maximum column value",
-                range: "Maximum column value must be between -50 and 50"
+                number: "Please enter a valid number",
+                range: "Maximum column value must be between -50 and 50",
+                gteq: "Maximum column value must be greater than or equal to minimum column value"
             },
             rowMin: {
                 required: "It is required to enter a minimum row value",
-                range: "Minimum row value must be between -50 and 50"
+                number: "Please enter a valid number",
+                range: "Minimum row value must be between -50 and 50",
+                lteq: "Minimum row value must be less than or equal to maximum row value"
             },
             rowMax: {
                 required: "It is required to enter a maximum row value",
-                range: "Maximum row value must be between -50 and 50"
+                number: "Please enter a valid number",
+                range: "Maximum row value must be between -50 and 50",
+                gteq: "Maximum row value must be greater than or equal to minimum row value"
             }
         }
     });

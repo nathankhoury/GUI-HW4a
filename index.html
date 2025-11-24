@@ -20,6 +20,21 @@ temporary text box to inform the user of the problem and direct them to a soluti
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <script>
+      // Early debug probe: confirms console logging works, lists scripts, and
+      // reports uncaught errors. Remove after debugging.
+      console.log('index.html: body start');
+      window.addEventListener('error', function(e) {
+        console.error('Uncaught error:', e.message, 'at', e.filename + ':' + e.lineno);
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        const scripts = Array.from(document.scripts).map(s => s.src || '[inline]');
+        console.log('Scripts on page:', scripts);
+      });
+    </script>
     <!-- user inputs for table -->
     <form id="form" class="inlineElement formBody">
       <fieldset> <!-- fieldset reference: https://www.w3schools.com/tags/tag_fieldset.asp -->
@@ -27,22 +42,21 @@ temporary text box to inform the user of the problem and direct them to a soluti
           <!-- form labels and entries -->
           <p class="formLabelEntryPair">
             <label for="colMin">Minimum column value (between -50 to 50)</label>
-            <input type="number" id="colMin" name="colMin" required>
+            <input type="text" id="colMin" name="colMin" required>
           </p>
           <p class="formLabelEntryPair">
             <label for="colMax">Maximum column value (between -50 to 50)</label>
-            <input type="number" id="colMax" name="colMax" required>
+            <input type="text" id="colMax" name="colMax" required>
           </p>
           <p class="formLabelEntryPair">
             <label for="rowMin">Minimum row value (between -50 to 50)</label>
-            <input type="number" id="rowMin" name="rowMin" required>
+            <input type="text" id="rowMin" name="rowMin" required>
           </p>
           <p class="formLabelEntryPair">
             <label for="rowMax">Maximum row value (between -50 to 50)</label>
-            <input type="number" id="rowMax" name="rowMax" required>
+            <input type="text" id="rowMax" name="rowMax" required>
           </p>
-          <button type="button" id="generateButton" onclick="generate()">Generate</button>
-        <div id="errors"></div>
+          <button type="submit" id="generateButton">Generate</button>
       </fieldset>
     </form>
     <div id="tableContainer" class="inlineElement">
@@ -54,9 +68,9 @@ temporary text box to inform the user of the problem and direct them to a soluti
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- jQuery Validation plugin -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-    <!-- JS code for calling validation methods -->
-    <script src="js/validate.js"></script>
     <!-- JS code for generating table -->
     <script src="js/script.js"></script>
+    <!-- JS code for calling validation methods -->
+    <script src="js/validate.js"></script>
    </body>
 </html>
