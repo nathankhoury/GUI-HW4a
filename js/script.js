@@ -38,31 +38,34 @@ function generate() {
     errors.style.borderStyle = "none";
     hasErrors = false;
 
-    // trigger jQuery validation
-    if ($('#form').valid() === true) {
-        // get user inputs from form
-        let colMin = document.getElementById("colMin").value;
-        let colMax = document.getElementById("colMax").value;
-        let rowMin = document.getElementById("rowMin").value;
-        let rowMax = document.getElementById("rowMax").value;
+    if(!$('#form').valid()) {
+        // invalid form 
+        console.log("form failed jquery validation")
+        return;
+    }
 
-        // debug message to terminal
-        console.log("got inputs: " + colMin + ", " + colMax + ", " + rowMin + ", " + rowMax);
+    // get user inputs from form
+    let colMin = document.getElementById("colMin").value;
+    let colMax = document.getElementById("colMax").value;
+    let rowMin = document.getElementById("rowMin").value;
+    let rowMax = document.getElementById("rowMax").value;
 
-        // verify numeric input
-        const verificationStatus = verify(colMin, colMax, rowMin, rowMax);
-        console.log("input verified: " + verificationStatus);
+    // debug message to terminal
+    console.log("got inputs: " + colMin + ", " + colMax + ", " + rowMin + ", " + rowMax);
 
-        if (verificationStatus) {
-            // cast to integers for remaining processes
-            colMin = Number(colMin);
-            colMax = Number(colMax);
-            rowMin = Number(rowMin);
-            rowMax = Number(rowMax);
+    // verify numeric input
+    const verificationStatus = verify(colMin, colMax, rowMin, rowMax);
+    console.log("input verified: " + verificationStatus);
 
-            // generate table
-            genTable(colMin, colMax, rowMin, rowMax);
-        }
+    if (verificationStatus) {
+        // cast to integers for remaining processes
+        colMin = Number(colMin);
+        colMax = Number(colMax);
+        rowMin = Number(rowMin);
+        rowMax = Number(rowMax);
+
+        // generate table
+        genTable(colMin, colMax, rowMin, rowMax);
     }
 }
 
