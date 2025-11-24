@@ -1,9 +1,6 @@
 $(document).ready(function() {
-    // Quick sanity log to verify this file is loaded and running.
+    // file loaded
     console.log("validate.js: document ready");
-    // Let the jQuery Validation plugin handle the form submit and
-    // call `submitHandler` when validation succeeds. Do not prevent
-    // the submit event here or it may interfere with plugin flow.
 
     $.validator.addMethod("lteq", function(value, element, param) {
         return Number(value) <= Number($(param).val());
@@ -17,14 +14,13 @@ $(document).ready(function() {
         submitHandler: function(form) { 
             // validation succeeded
             console.log("Validation succeeded");
-            // call the page's generate function; don't return false here
-            // — letting the plugin handle suppression of the native submit.
             generate();
         },
         invalidHandler: function(event, validator) {
             // validation failed
             console.log("Validation failed. Number of errors: " + validator.numberOfInvalids());
         },
+        errorClass: "error",    
         rules: {
             colMin: {
                 required: true,
@@ -78,4 +74,10 @@ $(document).ready(function() {
             }
         }
     });
+
+    // Address hanging error messages when related fields are changed
+    $('#colMax').on('input change', function() { $('#colMin').valid(); });
+    $('#colMin').on('input change', function() { $('#colMax').valid(); });
+    $('#rowMax').on('input change', function() { $('#rowMin').valid(); });
+    $('#rowMin').on('input change', function() { $('#rowMax').valid(); });
 });

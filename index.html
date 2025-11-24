@@ -20,21 +20,6 @@ temporary text box to inform the user of the problem and direct them to a soluti
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <script>
-      // Early debug probe: confirms console logging works, lists scripts, and
-      // reports uncaught errors. Remove after debugging.
-      console.log('index.html: body start');
-      window.addEventListener('error', function(e) {
-        console.error('Uncaught error:', e.message, 'at', e.filename + ':' + e.lineno);
-      });
-      window.addEventListener('unhandledrejection', function(e) {
-        console.error('Unhandled promise rejection:', e.reason);
-      });
-      document.addEventListener('DOMContentLoaded', function() {
-        const scripts = Array.from(document.scripts).map(s => s.src || '[inline]');
-        console.log('Scripts on page:', scripts);
-      });
-    </script>
     <!-- user inputs for table -->
     <form id="form" class="inlineElement formBody">
       <fieldset> <!-- fieldset reference: https://www.w3schools.com/tags/tag_fieldset.asp -->
