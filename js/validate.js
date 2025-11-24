@@ -112,8 +112,8 @@ $(document).ready(function() {
     });
 
     // Address hanging error messages when related fields are changed
-    $('#colMax').on('input change', function() { $('#colMin').valid(); });
-    $('#colMin').on('input change', function() { $('#colMax').valid(); });
-    $('#rowMax').on('input change', function() { $('#rowMin').valid(); });
-    $('#rowMin').on('input change', function() { $('#rowMax').valid(); });
+    $('#colMax').on('input', function() { $('#colMin').valid(); });
+    $('#colMin').on('input', function() { $('#colMax').valid(); });
+    $('#rowMax').on('input', function() { $('#rowMin').valid(); });
+    $('#rowMin').on('input', function() { $('#rowMax').valid(); });
 });
