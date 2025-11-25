@@ -24,7 +24,7 @@ const ROW_COLOR = "#fbb";
 // document references
 const table = $("#result")[0];
 
-/* main table generation driver, called after jQuery Validation succeeds */
+/* main table generation, called after jQuery Validation succeeds */
 function generate() {
     // debug message
     console.log("generate() called");
@@ -54,27 +54,25 @@ function genTable(cmin, cmax, rmin, rmax) {
 
     // fill in table
     for (let i = 0; i < yRange + 1; i++) {
-        // insert a new ith row
-        let row = table.insertRow(i);
-        for (let j = 0; j < xRange + 1; j++) {
-            // insert a new jth cell
-            let cell = row.insertCell(j);
-            cell.innerHTML = String((j + cmin)*(i + rmin));
+        let row = table.insertRow(i);           // insert a new ith row
+        for (let j = 0; j < xRange + 1; j++) {  // iterate within ith row j times
+            let cell = row.insertCell(j);       // insert a new jth cell
+            cell.innerHTML = String((j + cmin)*(i + rmin));     // calculate cell content (product of col and row headers)
+            
             if ((j + 1) % 2 == 0) {
-                // give every other col a darker background for contrast
-                cell.style.backgroundColor = COL_COLOR;
+                cell.style.backgroundColor = COL_COLOR;         // give every other col a darker background for contrast
             }
         }
+
         if ((i + 1) % 2 == 0) {
-            // give every other row a darker background for contrast
-            row.style.backgroundColor = ROW_COLOR;
+            row.style.backgroundColor = ROW_COLOR;             // give every other row a darker background for contrast
         }
-    
+
         // manually insert the row label
-        let cell = row.insertCell(0);
-        cell.innerHTML = i + rmin;
-        cell.style.backgroundColor = "black";
-        cell.style.color = "white";
+        let cell = row.insertCell(0);           // insert a new 0th cell for the row label
+        cell.innerHTML = i + rmin;              // set the row label content
+        cell.style.backgroundColor = "black";   // black background
+        cell.style.color = "white";             // white text
     }
 
     // add the table header at the end
